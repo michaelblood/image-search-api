@@ -75,6 +75,10 @@ const search = ({
       return;
     }
     let parsedBody = JSON.parse(body);
+    if (parsedBody.error) {
+      callback(new Error('API limit reached'));
+      return;
+    }
     let items = parseItems(parsedBody.items);
     callback(null, items);
   });

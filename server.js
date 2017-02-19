@@ -31,7 +31,7 @@ app.get('/api/search', (req, res) => {
 
   search({q, offset}, (err, items) => {
     if (err) {
-      res.json(err.toString());
+      res.json({error: err.toString()});
       return;
     }
     if (!pretty) res.json(items);
