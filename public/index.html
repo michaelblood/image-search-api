@@ -1,19 +1,68 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,intial-scale=1">
-    <title></title>
+    <title>Image Search</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
     <div class="container">
       <div class="page-header text-center">
-        <h1>Image Search Abstraction Layer</h1>
+        <h1>mb-img.herokuapp.com <small>image search abstraction layer</small></h1>
       </div>
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
-        
+					<h3>Example usage:</h3>
+					<p><br><code>http://mb-img.herokuapp.com/api/search?q=Karnivool</code><br><br>
+					This is the main API endpoint. The above example will return 10 images related to <a href="http://www.karnivool.com.au/latest" target="_blank">Karnivool</a>, an awesome Australian progressive rock band, in JSON format. In this example, you can see that the <code>q</code> parameter is the search term.</p>
+					<br>
+					<h3>Available API parameters:</h3>
+					<hr />
+					<div class="table-responsive">
+						<table class="table table-striped table-condensed">
+							<thead>
+								<tr>
+									<th>Parameter</th>
+									<th>Description</th>
+									<th>Example</th>
+									<th>Required</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>q</code></td>
+									<td>the term to be searched</td>
+									<td><code>q=imogen heap</code></td>
+									<td>Required</td>
+								</tr>
+								<tr>
+									<td><code>offset</code></td>
+									<td>a number corresponding to the number of results to skip (for pagination)</td>
+									<td><code>offset=42</code></td>
+									<td>Optional</td>
+								</tr>
+								<tr>
+									<td><code>pretty</code></td>
+									<td>"Prettify" the output. This is for use with the browser.</td>
+									<td><code>pretty=pretty</code></td>
+									<td>Optional</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
         </div>
+				<div class="col-xs-10 col-xs-offset-1">
+					<h3>Getting recent searches:</h3>
+					<hr />
+					<p>You can also get the 10 latest search terms here:<br><br>
+					<code>http://mb-img.herokuapp.com/api/search/latest</code><br><br>
+					The <code>pretty</code> parameter also works here., for example <code>http://mb-img.herokuapp.com/api/search?pretty=pretty</code></p>
+				</div>
       </div>
+			<hr />
+			<div class="row">
+				<div class="col-xs-10 col-xs-offset-1 text-center" style="height:100px; padding-top:35px">
+					Built using <a href="http://expressjs.com" target="_blank">Express</a>, <a href="https://www.mongodb.com/" target="_blank">mongoDB</a>, and <a href="https://cse.google.com/cse/" target="_blank">Google CSE</a>.
+				</div>
+			</div>
     </div>
   </body>
 </html>

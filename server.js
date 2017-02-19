@@ -27,14 +27,22 @@ app.get('/api/search/latest', (req, res) => {
 app.get('/api/search', (req, res) => {
   let q = req.query.q;
   let offset = req.query.offset || 0;
+  let pretty = req.query.pretty;
 
   search({q, offset}, (err, items) => {
     if (err) {
       res.json(err.toString());
       return;
     }
-    res.json(items);
+    if (!pretty) res.json(items);
+    else {
+      res.end(JSON.stringify(items, null, 2));
+    }
   });
+});
+
+app.get('/*', (req, res) => {
+  res.redirect('/');
 });
 
 app.listen(app.get('port'), () => {
