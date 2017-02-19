@@ -68,7 +68,7 @@ const search = ({
     return;
   }
   log(q);
-  const url = baseurl + qs.stringify({q, key, cx, offset});
+  const url = baseurl + qs.stringify({q, key, cx, start: offset});
   request(url, (err, res, body) => {
     if (err) {
       callback(err);
